@@ -3,9 +3,10 @@ command = "hugo --gc --minify -b $URL"
 publish = "public"
 functions = "netlify/functions/"
 
+[functions]
+directory = "netlify/functions/"
+
 [dev]
 framework = "hugo"
-command = "hugo server -D"
 publish = "public"
-port = 8888
-targetPort = 9888
+functions = "netlify/functions/"

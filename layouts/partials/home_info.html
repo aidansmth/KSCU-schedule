@@ -1,15 +1,10 @@
+# prevent mime based attacks
+Header set X-Content-Type-Options "nosniff"
+
 {{- with site.Params.homeInfoParams }}
 <article class="first-entry home-info">
     <header class="entry-header">
-        <script>
-            request = `/.netlify/functions/song?name="Bob"`
-            fetch(request).then((response) => {
-                console.log(response);
-                response.json().then((data) => {
-                    console.log(data);
-                });
-            });
-        </script>
+        <script type="application/javascript" src="/js/home_info.js"></script>
         <h1>{{ .Title | markdownify }}</h1>
     </header>
     <div class="entry-content">
