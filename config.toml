@@ -1,3 +1,12 @@
-baseURL = 'http://example.org/'
+baseURL = 'https://harmonious-fudge-3ff63b.netlify.app/'
 languageCode = 'en-us'
 title = 'KSCU Testing'
+theme = "PaperMod"
+
+[params]
+defaultTheme = "dark"
+disableThemeToggle = true
+
+[params.homeInfoParams]
+title = 'Hi there wave'
+content = "Can be Info, links, about..."
