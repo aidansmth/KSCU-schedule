@@ -2,8 +2,13 @@
 <article class="first-entry home-info">
     <header class="entry-header">
         <script>
-            fetch(`/.netlify/functions/song?name="Bob"`)
-                .then(res => { console.log(response.json()) })
+            request = `/.netlify/functions/song?name="Bob"`
+            fetch(request).then((response) => {
+                console.log(response);
+                response.json().then((data) => {
+                    console.log(data);
+                });
+            });
         </script>
         <h1>{{ .Title | markdownify }}</h1>
     </header>
