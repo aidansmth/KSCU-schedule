@@ -2,7 +2,7 @@
 <article class="first-entry home-info">
     <header class="entry-header">
         <script>
-            fetch(`/netlify/functions/song?name="Bob"`)
+            fetch(`/.netlify/functions/song?name="Bob"`)
                 .then(res => { console.log(response.json()) })
         </script>
         <h1>{{ .Title | markdownify }}</h1>
