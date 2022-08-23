@@ -2,3 +2,4 @@
 .netlify
 public/
 node_modules/
+API_testing.py

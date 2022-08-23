@@ -2,9 +2,43 @@
 const handler = async (event) => {
   try {
     const subject = event.queryStringParameters.name || 'World'
+    const url = `https://spinitron.com/api/`
+    const access_string = `?access-token=`
+    const key = `fsr9w2R8irUUqUkze_QUcyB3`
+
+    show_url = url + `shows/` + access_string + key + `&count=1`
+    fetch(show_url)
+      .then((response) => response.json())
+      .then((data) => {
+
+        console.log("Recieved data");
+        items = data["items"][0]
+        console.log(items['title'])
+        show_title = items['title']
+
+        // Testing dates
+        let start_time = new Date(items['start'])
+        const current_time = new Date()
+        console.log(start_time < current_time)
+        if (start_time < current_time) {
+          currentShow = true
+        } else {
+          currentShow = false
+        }
+      }
+      );
+    // let name = alert(data["items"])
+    // console.log
+
+    // Parse response object
+    console.log("TITLE :" + show_title)
     return {
       statusCode: 200,
-      body: JSON.stringify({ message: `Hello ${subject}` }),
+      body: JSON.stringify({
+        show: show_title,
+        live: currentShow
+      },
+      ),
       // // more keys you can return:
       // headers: { "headerName": "headerValue", ... },
       // isBase64Encoded: true,
