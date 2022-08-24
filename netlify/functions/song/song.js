@@ -1,6 +1,7 @@
 import fetch from 'node-fetch';
 // Docs on event and context https://docs.netlify.com/functions/build/#code-your-function-2
 const handler = async (event) => {
+  var show_title, current_show
   try {
     const subject = event.queryStringParameters.name || 'World'
     const url = `https://spinitron.com/api/`
@@ -22,9 +23,9 @@ const handler = async (event) => {
         const current_time = new Date()
         console.log(start_time < current_time)
         if (start_time < current_time) {
-          currentShow = true
+          current_show = true
         } else {
-          currentShow = false
+          current_show = false
         }
       }
       );
@@ -36,7 +37,7 @@ const handler = async (event) => {
       statusCode: 200,
       body: JSON.stringify({
         show: show_title,
-        live: currentShow
+        live: current_show
       },
       ),
       // // more keys you can return:
