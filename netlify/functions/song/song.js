@@ -1,7 +1,7 @@
 import fetch from 'node-fetch';
 // Docs on event and context https://docs.netlify.com/functions/build/#code-your-function-2
+var show_title, current_show
 const handler = async (event) => {
-  var show_title, current_show
   try {
     const subject = event.queryStringParameters.name || 'World'
     const url = `https://spinitron.com/api/`
@@ -33,6 +33,8 @@ const handler = async (event) => {
     // console.log
 
     // Parse response object
+    console.log(show_title)
+    console.log(current_show)
     return {
       statusCode: 200,
       body: JSON.stringify({
