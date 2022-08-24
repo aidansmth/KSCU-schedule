@@ -5,7 +5,7 @@ const handler = async (event) => {
     const subject = event.queryStringParameters.name || 'World'
     const url = `https://spinitron.com/api/`
     const access_string = `?access-token=`
-    const key = `fsr9w2R8irUUqUkze_QUcyB3`
+    const key = process.env.KEY
     show_url = url + `shows/` + access_string + key + `&count=1`
     let response = await fetch(show_url);
     let data = await response.json();
