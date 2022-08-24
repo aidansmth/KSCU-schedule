@@ -1,3 +1,4 @@
+import fetch from 'node-fetch';
 // Docs on event and context https://docs.netlify.com/functions/build/#code-your-function-2
 const handler = async (event) => {
   try {
@@ -31,7 +32,6 @@ const handler = async (event) => {
     // console.log
 
     // Parse response object
-    console.log("TITLE :" + show_title)
     return {
       statusCode: 200,
       body: JSON.stringify({
