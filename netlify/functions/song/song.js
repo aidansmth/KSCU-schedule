@@ -9,31 +9,43 @@ const handler = async (event) => {
     show_url = url + `shows/` + access_string + key + `&count=1`
     let response = await fetch(show_url);
     let data = await response.json();
-    console.log("Recieved data");
+    console.log("Recieved data...");
     items = data["items"][0]
-    console.log(items['title'])
+
     show_title = items['title']
+    console.log("Show title: " + show_title)
+    category = items['category']
+    console.log("Category: " + category)
 
-    // Testing dates
-    let start_time = new Date(items['start'])
-    const current_time = new Date()
-    console.log(start_time < current_time)
-    if (start_time < current_time) {
-      current_show = true
-    } else {
-      current_show = false
-    }
-    // let name = alert(data["items"])
-    // console.log
+    start_time = items['start']
+    console.log("Show start time: " + start_time)
+    end_time = items['end']
+    console.log("Show end time: " + end_time)
+    duration = items['duration']
+    console.log("Show duration: " + duration)
 
-    // Parse response object
-    console.log(show_title)
-    console.log(current_show)
+    links = items['_links']
+    DJ_api_link = links['personas'][0]['href']
+    let DJresponse = await fetch(DJ_api_link);
+    let DJdata = await DJresponse.json();
+    console.log(DJdata)
+
+    DJ_name = DJdata['name']
+    console.log("DJ name: " + DJ_name)
+    DJ_bio = DJdata['bio']
+    DJ_since = DJdata['since']
+
     return {
       statusCode: 200,
       body: JSON.stringify({
-        show: `${show_title}`,
-        live: `${current_show}`
+        title: `${show_title}`,
+        category: `${category}`,
+        start_time: `${start_time}`,
+        end_time: `${end_time}`,
+        duration: `${duration}`,
+        DJ_name: `${DJ_name}`,
+        DJ_bio: `${DJ_bio}`,
+        DJ_since: `${DJ_since}`
       },
       ),
       // // more keys you can return:

@@ -1,11 +1,12 @@
 baseURL = 'https://harmonious-fudge-3ff63b.netlify.app/'
 languageCode = 'en-us'
-title = 'KSCU Testing'
+title = 'API Testing'
 theme = "PaperMod"
 
 [params]
 defaultTheme = "dark"
 disableThemeToggle = true
+
 
 [params.homeInfoParams]
 title = 'Hi there wave'
