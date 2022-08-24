@@ -4,10 +4,9 @@ title = 'API Testing'
 theme = "PaperMod"
 
 [params]
-defaultTheme = "dark"
-disableThemeToggle = true
+disableThemeToggle = false
 
 
 [params.homeInfoParams]
-title = 'Hi there wave'
-content = "Can be Info, links, about..."
+title = ''
+content = ''

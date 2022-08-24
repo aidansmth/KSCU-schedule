@@ -1,11 +1,17 @@
 {{- with site.Params.homeInfoParams }}
 <article class="first-entry home-info">
     <header class="entry-header">
-        <h1 id="title">TEST</h1>
-        <script type="application/javascript" src="/js/home_info.js"></script>
+        <h1 id="title">Fetching show...</h1>
+        <h2 id="DJ"></h2>
+        <script type="application/javascript" src="/js/placeShow.js"></script>
         <h1>{{ .Title | markdownify }}</h1>
     </header>
     <div class="entry-content">
+        <h3 id="tracks">Fetching tracks...</h3>
+        <br>
+        <h4>Past tracks:</h4>
+        <ul id="tracks-list"></ul>
+        <script type="application/javascript" src="/js/recentTrack.js"></script>
         {{ .Content | markdownify }}
     </div>
     <footer class="entry-footer">
