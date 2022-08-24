@@ -16,16 +16,16 @@ const handler = async (event) => {
         console.log("Recieved data");
         items = data["items"][0]
         console.log(items['title'])
-        show_title = items['title']
+        window.show_title = items['title']
 
         // Testing dates
         let start_time = new Date(items['start'])
         const current_time = new Date()
         console.log(start_time < current_time)
         if (start_time < current_time) {
-          current_show = true
+          window.current_show = true
         } else {
-          current_show = false
+          window.current_show = false
         }
       }
       );
