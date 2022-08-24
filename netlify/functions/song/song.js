@@ -1,6 +1,7 @@
 import fetch from 'node-fetch';
 // Docs on event and context https://docs.netlify.com/functions/build/#code-your-function-2
-var show_title, current_show
+var show_title
+var current_show
 const handler = async (event) => {
   try {
     const subject = event.queryStringParameters.name || 'World'
@@ -16,16 +17,16 @@ const handler = async (event) => {
         console.log("Recieved data");
         items = data["items"][0]
         console.log(items['title'])
-        window.show_title = items['title']
+        show_title = items['title']
 
         // Testing dates
         let start_time = new Date(items['start'])
         const current_time = new Date()
         console.log(start_time < current_time)
         if (start_time < current_time) {
-          window.current_show = true
+          current_show = true
         } else {
-          window.current_show = false
+          current_show = false
         }
       }
       );
