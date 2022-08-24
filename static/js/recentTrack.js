@@ -8,6 +8,14 @@ function duration(duration) {
     return minutes + ":" + seconds
 }
 
+function trimToLength(string, length) {
+    if (string.length > length) {
+        return string.substring(0, length - 3) + "..."
+    } else {
+        return string
+    }
+}
+
 async function putRecentTracks() {
     request = `/.netlify/functions/spins`
     console.log("Request: " + request)
@@ -23,9 +31,13 @@ async function putRecentTracks() {
     let list = document.getElementById("tracks-list");
     for (let i = 1; i < data.length; i++) {
         let row = document.createElement("tr");
-        row.innerHTML = data[i]["song"] + " by " + data[i]["artist"] + " (" + duration(data[i]["duration"]) + ")";
+        song_title = data[i]["song"]
+        artist = data[i]["artist"]
+
+        row.innerHTML = song_title + " by " + artist + " (" + duration(data[i]["duration"]) + ")";
         list.appendChild(row);
     }
+
 }
 
 putRecentTracks()
