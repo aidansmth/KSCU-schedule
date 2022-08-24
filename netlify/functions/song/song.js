@@ -39,8 +39,8 @@ const handler = async (event) => {
     return {
       statusCode: 200,
       body: JSON.stringify({
-        show: show_title,
-        live: current_show
+        show: `${show_title}`,
+        live: `${current_show}`
       },
       ),
       // // more keys you can return:
