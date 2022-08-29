@@ -1,12 +1,4 @@
 
-function duration(duration) {
-    let minutes = Math.floor(duration / 60)
-    let seconds = duration % 60
-    if (seconds < 10) {
-        seconds = "0" + seconds
-    }
-    return minutes + ":" + seconds
-}
 
 function trimToLength(string, length) {
     if (string.length > length) {
@@ -17,6 +9,14 @@ function trimToLength(string, length) {
 }
 
 async function putRecentTracks() {
+    function duration(duration_time) {
+        let minutes = Math.floor(duration_time / 60)
+        let seconds = duration_time % 60
+        if (seconds < 10) {
+            seconds = "0" + seconds
+        }
+        return minutes + ":" + seconds
+    }
     request = `/.netlify/functions/spins`
     console.log("Request: " + request)
     let response = await fetch(request);
@@ -24,10 +24,10 @@ async function putRecentTracks() {
     console.log("Recieved track data...");
     console.log(data)
     console.log(typeof data)
-    document.getElementById("tracks").innerHTML = "Currently playing:\n"
+    document.getElementById("current-track").innerHTML = "Currently playing:\n"
     first_duration = data[0]["duration"]
-    document.getElementById("tracks").innerHTML += data[0]["song"] + " by " + data[0]["artist"] + " (" + duration(first_duration) + ")\n"
-
+    document.getElementById("current-track").innerHTML += data[0]["song"] + " by " + data[0]["artist"] + " (" + duration(first_duration) + ")\n"
+    document.getElementById("past-tracks").innerHTML = "Past tracks:"
     let list = document.getElementById("tracks-list");
     for (let i = 1; i < data.length; i++) {
         let row = document.createElement("tr");

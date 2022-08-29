@@ -1,5 +1,4 @@
 
-
 const formatAMPM = (date) => {
     let hours = date.getHours();
     let minutes = date.getMinutes();
@@ -44,6 +43,7 @@ async function getShow() {
             document.getElementById("title").innerHTML = "Live now: " + title;
             document.getElementById("DJ").innerHTML += " with " + DJ_name + " till " + formatAMPM(end_time) + "\n"
         }
+        return { statusCode: 500, body: "Next Show: " + title }
     }
     catch (error) {
         return { statusCode: 500, body: error.toString() }
