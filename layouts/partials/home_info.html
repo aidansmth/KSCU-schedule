@@ -1,13 +1,16 @@
 {{- with site.Params.homeInfoParams }}
-<article class="first-entry home-info">
-    <header class="entry-header">
-        {{ partial "show.html" . }}
-        <h1>{{ .Title | markdownify }}</h1>
-    </header>
+<!DOCTYPE html>
+<link rel="stylesheet" href="css/home_info.css">
+</link>
+<header class="entry-header">
+    <h1>{{ .Title | markdownify }}</h1>
+</header>
 
-    {{ partial "tracks.html" . }}
-    <footer class="entry-footer">
-        {{ partial "social_icons.html" site.Params.socialIcons }}
-    </footer>
+{{ partial "tracks.html" . }}
+<footer class="entry-footer">
+    {{ partial "social_icons.html" site.Params.socialIcons }}
+</footer>
+<iframe class="iSchedule" src="https://spinitron.com/KSCU/calendar/?bodyclass=simple"
+    style="width: 100%; height: 3000px;width: 100%; " scrolling="auto" frameborder="0"></iframe>
 </article>
 {{- end -}}

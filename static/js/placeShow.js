@@ -11,6 +11,27 @@ const formatAMPM = (date) => {
 }
 
 async function getShow() {
+    title = localStorage.getItem('title')
+    if (title !== null) {
+        start_time = new Date(localStorage.getItem('start_time'))
+        end_time = new Date(localStorage.getItem('end_time'))
+        DJ_name = localStorage.getItem('DJ_name')
+        console.log("Found show data in local memory...")
+        if (start_time > new Date()) {
+            console.log("Show is upcoming...")
+            document.getElementById("title").innerHTML = "Next Show: " + title;
+            document.getElementById("DJ").innerHTML += " with " + DJ_name + " at " + formatAMPM(start_time) + "\n"
+        } else {
+            if (end_time < new Date()) { // Test to make sure show is still live
+                // Throw error
+                throw new Error("Show is in the past...")
+            }
+            console.log("Show is currently playing...")
+            document.getElementById("title").innerHTML = "Live now: " + title;
+            document.getElementById("DJ").innerHTML += " with " + DJ_name + " till " + formatAMPM(end_time) + "\n"
+        }
+        return
+    }
     console.log("Entered function...")
     try {
         request = `/.netlify/functions/show`
@@ -28,6 +49,16 @@ async function getShow() {
         DJ_name = data['DJ_name']
         DJ_bio = data['DJ_bio']
         DJ_since = data['DJ_since']
+
+        localStorage.setItem('title', title)
+        localStorage.setItem('category', category)
+        localStorage.setItem('start_time', start_time)
+        localStorage.setItem('end_time', end_time)
+        localStorage.setItem('duration', duration)
+        localStorage.setItem('DJ_name', DJ_name)
+        localStorage.setItem('DJ_bio', DJ_bio)
+        localStorage.setItem('DJ_since', DJ_since)
+        console.log("Set local storage...")
 
         // Test if the show is currently playing or upcoming
         if (start_time > new Date()) {

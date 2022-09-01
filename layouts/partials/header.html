@@ -1,0 +1,37 @@
+<script>
+    document.body.classList.remove('dark')
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="{{ "" }}">
+                <img src="images/arrow_logo.svg" alt="KSCU Logo" width="150" height="65"></object>
+            </a>
+        </div>
+        {{ partial "show.html" . }}
+        TEST TEST
+
+    </nav>
+</header>
+<style>
+    .header {
+        align-items: left;
+        display: inline;
+        margin: auto var(--gap);
+        margin-top: 12px;
+        -webkit-touch-callout: none;
+        /* iOS Safari */
+        -webkit-user-select: none;
+        /* Safari */
+        -khtml-user-select: none;
+        /* Konqueror HTML */
+        -moz-user-select: none;
+        /* Old versions of Firefox */
+        -ms-user-select: none;
+        /* Internet Explorer/Edge */
+        user-select: none;
+        /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+    }
+</style>
