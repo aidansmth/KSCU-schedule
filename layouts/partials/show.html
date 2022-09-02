@@ -1,20 +1,12 @@
 {{- with site.Params.homeInfoParams }}
-<script src="https://unpkg.com/typeit@8.7.0/dist/index.umd.js"></script>
 <div class="current-show">
+    <div style="display:inline;">
+        <span id="live-now-circle" style="display: none;"></span>
+        <span id="isLive"></span>
+    </div>
     <p id="title"></p>
     <p id="DJ"></p>
 </div>
-<style>
-    .current-show {
-        line-height: normal;
-        font-size: 15px;
-        font-weight: bold;
-        margin: auto var(--gap);
-        margin-left: 12px;
-        /* position: relative; */
-        justify-content: left;
-    }
-</style>
 
 <script type="application/javascript" src="/js/placeShow.js"></script>
 {{- end -}}

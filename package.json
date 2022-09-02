@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "node-fetch": "^3.2.10"
+    "node-fetch": "^3.2.10",
+    "store2": "^2.14.2"
   }
 }

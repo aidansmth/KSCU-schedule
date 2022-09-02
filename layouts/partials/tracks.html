@@ -1,12 +1,69 @@
 {{- with site.Params.homeInfoParams }}
 <article class="currently playing tracks">
-    <div class="entry-content">
-        <p id="simpleUsage">
-        <h3 id="current-track"></h3>
-        <br>
-        <h4 id="past-tracks"></h4>
-        <ul id="tracks-list"></ul>
-        <script type="application/javascript" src="/js/recentTrack.js"></script>
+  <div class="entry-content">
+    <div id="left-side">
+
+      <head>
+        <style>
+          .menu #past-tracks {
+            max-height: 0;
+            /*  height at the start            */
+            overflow: hidden;
+            /*  required to hide li elements   */
+            transition: 1s;
+            /*  works both ways                */
+            position: absolute;
+            z-index: 2;
+            top: 80px;
+          }
+
+          .menu:hover #past-tracks {
+            /* max-height: 300px; TO UNCOMMENT*/
+            /*  max height when expanded  */
+          }
+
+          .menu {
+            position: relative;
+            /* display: inline-block; */
+            cursor: pointer;
+            margin-right: 10px;
+            color: rgb(31, 31, 31);
+          }
+
+          .track-and-artist {
+            font-size: 15px;
+          }
+
+          #current-track {
+            font-weight: 600;
+          }
+
+          #current-artist {
+            font-style: italic;
+            font-weight: 400;
+          }
+        </style>
+      </head>
+
+
+      <body style="height: 120px">
+        <div class="menu">
+          <p>Currently playing:</p>
+          <div class="track-and-artist">
+            <span id="current-track"></span>
+            <p id="current-artist"></p>
+          </div>
+          <ul id="past-tracks"></ul>
+        </div>
+
+      </body>
+      <img id="album-art"
+        src="https://is4-ssl.mzstatic.com/image/thumb/Music124/v4/cd/39/22/cd39222d-9aa7-a5ab-68e5-4c11a2ba1dff/cover.jpg/170x170bb.jpg"
+        width="90" height="90" style="border-radius: 12px;">
+      </img>
     </div>
+    <script type="application/javascript" src="/js/recentTrack.js"></script>
+  </div>
+
 </article>
 {{- end -}}

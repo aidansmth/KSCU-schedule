@@ -1,21 +1,28 @@
-<script>
-    document.body.classList.remove('dark')
-</script>
-
-<header class="header">
+<script type="text/javascript" src="/js/store2.js"></script>
+<header class="header" style="overflow:visible;">
     <nav class="nav">
         <div class="logo">
             <a href="{{ "" }}">
                 <img src="images/arrow_logo.svg" alt="KSCU Logo" width="150" height="65"></object>
             </a>
+            {{ partial "show.html" . }}
         </div>
-        {{ partial "show.html" . }}
-        TEST TEST
+        {{ partial "tracks.html" . }}
+        </div>
 
     </nav>
 </header>
 <style>
+    #left-side {
+        display: flex;
+        align-items: right;
+        text-align: right;
+        margin: auto var(--gap);
+        margin-left: 5px;
+    }
+
     .header {
+        overflow: visible;
         align-items: left;
         display: inline;
         margin: auto var(--gap);
@@ -33,5 +40,6 @@
         user-select: none;
         /* Non-prefixed version, currently
                                   supported by Chrome, Edge, Opera and Firefox */
+        z-index: 4;
     }
 </style>
