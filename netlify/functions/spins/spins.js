@@ -11,6 +11,7 @@ const handler = async (event) => {
         spins_url = url + `spins/` + access_string + _key + `&count=5`
         let response = await fetch(spins_url);
         let data = await response.json();
+        console.log(data)
         console.log("Recieved data...");
         spins = data["items"]
         var toReturn = [{}, {}, {}, {}, {}]
@@ -21,6 +22,7 @@ const handler = async (event) => {
             toReturn[i]["image"] = spins[song]["image"];
             toReturn[i]["duration"] = spins[song]["duration"];
             toReturn[i]["released"] = spins[song]["released"];
+            toReturn[i]["end"] = spins[song]["end"];
             i++;
         }
         // console.log(toReturn)

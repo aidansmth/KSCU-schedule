@@ -62,7 +62,7 @@
     transform: scale(1);
     animation: pulse-red 2s infinite;
     animation-play-state: paused;
-    margin-right: 5px
+    margin-right: 1px
 }
 
 @keyframes pulse-red {

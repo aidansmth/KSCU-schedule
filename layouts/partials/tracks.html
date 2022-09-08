@@ -1,4 +1,5 @@
 {{- with site.Params.homeInfoParams }}
+
 <article class="currently playing tracks">
   <div class="entry-content">
     <div id="left-side">
@@ -15,11 +16,6 @@
             position: absolute;
             z-index: 2;
             top: 80px;
-          }
-
-          .menu:hover #past-tracks {
-            /* max-height: 300px; TO UNCOMMENT*/
-            /*  max height when expanded  */
           }
 
           .menu {
@@ -42,27 +38,113 @@
             font-style: italic;
             font-weight: 400;
           }
+
+          #play-box {
+            height: 90;
+            width: 90;
+            position: relative;
+            border-radius: 12px;
+
+          }
+
+          @keyframes spin {
+            from {
+              transform: rotate(0deg);
+            }
+
+            to {
+              transform: rotate(360deg);
+            }
+          }
+
+          #album-art {
+            margin: 0 auto;
+            z-index: -1;
+            border-radius: 12px;
+            animation-name: spin;
+            animation-duration: 2200ms;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+            animation-play-state: paused;
+          }
+
+
+          #play-button {
+            width: 45px;
+            height: 45px;
+            margin-left: 5px;
+            /* margin: 0 auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin: -22.5px 0 0 -22.5px; */
+          }
         </style>
       </head>
 
 
       <body style="height: 120px">
         <div class="menu">
+          <p>Tune in:</p>
           <p>Currently playing:</p>
           <div class="track-and-artist">
             <span id="current-track"></span>
-            <p id="current-artist"></p>
+            <br>
+            <span>By </span>
+            <span id="current-artist"></span>
           </div>
           <ul id="past-tracks"></ul>
         </div>
 
       </body>
-      <img id="album-art"
-        src="https://is4-ssl.mzstatic.com/image/thumb/Music124/v4/cd/39/22/cd39222d-9aa7-a5ab-68e5-4c11a2ba1dff/cover.jpg/170x170bb.jpg"
-        width="90" height="90" style="border-radius: 12px;">
-      </img>
+      <div id="play-box">
+        <div id="wrapper" style="border-radius: 12px;">
+          <img id="album-art" src="images/vinyl.svg" width="90" height="90">
+          </img>
+        </div>
+      </div>
+      <img src="images/play_button.svg" alt="Play Button" id="play-button"></object>
+      <!-- <input type="range" id="vol" orient="vertical" max="1" min="0" step="0.1" value="10" style="height: 90px;"
+        onchange="Howler.volume(this.value)" /> -->
+      <script>
+        Howler.stop()
+        Howler.unload()
+        var scratchOut = new Howl({
+          src: 'audio/sweep_short.mp3',
+          format: ['mp3'],
+          autoplay: false,
+          volume: 0.2
+        });
+        var sound = new Howl({
+          src: 'http://kscu.streamguys1.com:80/live',
+          format: ['mp3', 'aac'],
+          autoplay: false,
+          html5: true
+        });
+        var startBtn = document.getElementById("play-button");
+        startBtn.addEventListener("click", () => {
+          if (sound.playing()) {
+            sound.pause()
+            scratchOut.play()
+            document.getElementById("play-button").src = "images/play_button.svg"
+            document.getElementById("album-art").style.animationPlayState = 'paused'
+          } else {
+            // console.log(sound.loaded())
+            sound.play()
+            document.getElementById("play-button").src = "images/pause_button.svg"
+            document.getElementById("album-art").style.animationPlayState = 'running'
+            // tuneIn.on('end', function () {
+            //   console.log("Playing radio.")
+            //   sound.play()
+            // });  
+          }
+        });
+      </script>
     </div>
-    <script type="application/javascript" src="/js/recentTrack.js"></script>
+  </div>
+  </div>
+  </div>
+  <script type="application/javascript" src="/js/recentTrack.js"></script>
   </div>
 
 </article>
