@@ -1,6 +1,6 @@
 baseURL = 'https://harmonious-fudge-3ff63b.netlify.app/'
 languageCode = 'en-us'
-title = 'API Testing'
+title = 'KSCU Fall Schedule'
 theme = "PaperMod"
 
 [params]
