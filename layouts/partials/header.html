@@ -2,7 +2,7 @@
 <script type="text/javascript" src="/js/howler.core.js"></script>
     <nav class="nav">
         <div class="logo">
-            <img src="images/arrow_logo.svg" alt="KSCU Logo" width="150" height="65"></img>
+            <img src="images/arrow_logo.svg" class="logo svg" alt="KSCU Logo" width="150" height="65"></img>
 
             {{ partial "show.html" . }}
         </div>
@@ -55,5 +55,10 @@
 
     #top {
         margin-top: 20px;
+    }
+
+    .logo.svg {
+        margin-left: 12px;
+        margin-right: 0px
     }
 </style>
