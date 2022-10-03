@@ -47,16 +47,6 @@
 
           }
 
-          @keyframes spin {
-            from {
-              transform: rotate(0deg);
-            }
-
-            to {
-              transform: rotate(360deg);
-            }
-          }
-
           #album-art {
             margin: 0 auto;
             z-index: -1;
@@ -85,7 +75,6 @@
 
       <body style="height: 120px">
         <div class="menu">
-          <p>Tune in:</p>
           <p>Currently playing:</p>
           <div class="track-and-artist">
             <span id="current-track"></span>
@@ -97,16 +86,9 @@
         </div>
 
       </body>
-      <div id="play-box">
-        <div id="wrapper" style="border-radius: 12px;">
-          <img id="album-art" src="images/vinyl.svg" width="90" height="90">
-          </img>
-        </div>
-      </div>
-      <img src="images/play_button.svg" alt="Play Button" id="play-button"></object>
       <!-- <input type="range" id="vol" orient="vertical" max="1" min="0" step="0.1" value="10" style="height: 90px;"
         onchange="Howler.volume(this.value)" /> -->
-      <script>
+      <!-- <script>
         Howler.stop()
         Howler.unload()
         var scratchOut = new Howl({
@@ -139,7 +121,7 @@
             // });  
           }
         });
-      </script>
+      </script> -->
     </div>
   </div>
   </div>

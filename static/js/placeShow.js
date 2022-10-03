@@ -20,15 +20,9 @@ async function fetchShow() {
         store('showData', data)
         return { statusCode: 500, body: "Next Show: " + title }
     }
-    catch (error) {
-        return { statusCode: 500, body: error.toString() }
-    }
-}
-
-async function getShow() {
-
-    function placeData(data) {
-        // if show is upcoming
+    catch (error) { return { statusCode: 500, body: error.toString() } }
+} async function getShow() {
+    function placeData(data) { // if show is upcoming 
         if (new Date(data['start_time']) > Date.now()) {
             // if show is in the future
             document.getElementById('isLive').innerHTML = "Up Next on KSCU:"
